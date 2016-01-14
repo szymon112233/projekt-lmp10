@@ -12,6 +12,8 @@ aproksymator_na_bazie.o: makespl.h points.h gaus/piv_ge_solver.h
 
 interpolator.o: makespl.h points.h gaus/piv_ge_solver.h
 	$(CC) -I gaus -c interpolator.c
+apro_trygo.o: makespl.h points.h 
+	$(CC) -I gaus -c apro_trygo.c
 
 .PHONY: clean
 

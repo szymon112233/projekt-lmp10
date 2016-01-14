@@ -8,8 +8,8 @@ make_spl(points_t * pts, spline_t * spl)
 
     double         *x = pts->x;
     double         *y = pts->y;
-    int		i, j, k, m n=pts->n;
-    double a0=0.0,a[n],b[n]
+    int		i, j, k, m, n=pts->n;
+    double a0=0.0,a[n],b[n] p = x[0], q = x[n-1],;
 
     m = (n-1)/2;
 
@@ -24,7 +24,7 @@ make_spl(points_t * pts, spline_t * spl)
         a[i]=0.0;
         for(j=0; j<n ; j++)
         {
-            a[i]+=y[j]*cos(2*M_PI*i*j/n);
+            a[i]+=y[j]*cos(()2*M_PI*i*j)/n);
         }
         a[i]*=2;
         a[i]/=n;
@@ -32,7 +32,7 @@ make_spl(points_t * pts, spline_t * spl)
         b[i]=0.0;
         for(j=0; j<n ; j++)
         {
-            b[i]+=y[j]*sin(2*M_PI*i*j/n);
+            b[i]+=y[j]*sin((2*M_PI*i*j)/n);
         }
         b[i]*=2;
         b[i]/=n;
@@ -41,11 +41,11 @@ make_spl(points_t * pts, spline_t * spl)
 
 
 
-    if (alloc_spl(spl, nb) == 0)
+    if (alloc_spl(spl, n) == 0)
     {
         for(i = 0 ; i < n ; i++)
         {
-            double xx = spl->x[i] = p + i*(k-p)/(m-1);
+            double xx = spl->x[i] = p + i*(q-p)/(m-1);
             spl->f[i] = 0;
             spl->f1[i] = 0;
             spl->f2[i] = 0;
