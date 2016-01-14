@@ -9,7 +9,7 @@ make_spl(points_t * pts, spline_t * spl)
     double         *x = pts->x;
     double         *y = pts->y;
     int		i, j, k, m, n=pts->n;
-    double a0=0.0,a[n],b[n] p = x[0], q = x[n-1],;
+    double a0=0.0,a[n],b[n], p = x[0], q = x[n-1],dt;
 
     m = (n-1)/2;
 
@@ -24,7 +24,7 @@ make_spl(points_t * pts, spline_t * spl)
         a[i]=0.0;
         for(j=0; j<n ; j++)
         {
-            a[i]+=y[j]*cos(()2*M_PI*i*j)/n);
+            a[i]+=y[j]*cos((2*M_PI*i*j)/n);
         }
         a[i]*=2;
         a[i]/=n;
