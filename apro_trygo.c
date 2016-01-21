@@ -8,7 +8,7 @@ make_spl(points_t * pts, spline_t * spl)
 
     double         *x = pts->x;
     double         *y = pts->y;
-    int		i, j, k, m, n=pts->n;
+    int		i, j, m, n=pts->n;
     double a0=0.0,a[n],b[n], p = x[0], q = x[n-1],dt;
 
     m = (n-1)/2;
@@ -54,9 +54,9 @@ make_spl(points_t * pts, spline_t * spl)
             {
                 dt = 2.0*M_PI*j/n;
                 spl->f[i] += a[j]*cos(dt*xx) + b[j]*sin(dt*xx);
-                spl->f1[i] += (-1)*dt*a[j]*sin(dt*xx) + dt*b[j]*cos(dt*xx);
-                spl->f2[i] += (-1)*dt*dt*a[j]*cos(dt*xx) + (-1)*dt*dt*b[j]*sin(dt*xx);
-                spl->f3[i] += pow(dt,3)*a[j]*sin(dt*xx) + (-1)*pow(dt,3)*b[j]*cos(dt*xx);
+                spl->f1[i] += (-1)*(dt*(a[j]*sin(dt*xx) - b[j]*cos(dt*xx)));
+                spl->f2[i] += (-1)*dt*dt*(a[j]*cos(dt*xx) + b[j]*sin(dt*xx));
+                spl->f3[i] += pow(dt,3)*(a[j]*sin(dt*xx) - b[j]*cos(dt*xx));
             }
         }
     }
